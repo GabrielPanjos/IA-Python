@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-tertiary: #1a1a24;
+  --bg-card: #16161f;
+  --accent-primary: #7c6af7;
+  --accent-secondary: #56cfb2;
+  --accent-glow: rgba(124, 106, 247, 0.12);
+  --text-primary: #e8e8f0;
+  --text-secondary: #8888aa;
+  --text-muted: #555566;
+  --border-subtle: #1e1e2e;
+  --border-active: #2e2e44;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-active);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Prose styles for markdown */
+.prose-chat {
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.prose-chat p {
+  margin-bottom: 0.85em;
+}
+
+.prose-chat p:last-child {
+  margin-bottom: 0;
+}
+
+.prose-chat strong {
+  color: #c8c8e8;
+  font-weight: 600;
+}
+
+.prose-chat em {
+  color: var(--accent-secondary);
+  font-style: italic;
+}
+
+.prose-chat h1, .prose-chat h2, .prose-chat h3, .prose-chat h4 {
+  color: #d0d0ee;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  line-height: 1.3;
+}
+
+.prose-chat h1 { font-size: 1.25rem; }
+.prose-chat h2 { font-size: 1.1rem; }
+.prose-chat h3 { font-size: 1rem; }
+
+.prose-chat ul, .prose-chat ol {
+  padding-left: 1.4em;
+  margin-bottom: 0.85em;
+}
+
+.prose-chat li {
+  margin-bottom: 0.3em;
+}
+
+.prose-chat ul li::marker {
+  color: var(--accent-primary);
+}
+
+.prose-chat ol li::marker {
+  color: var(--accent-secondary);
+  font-weight: 600;
+}
+
+.prose-chat code {
+  background: rgba(124, 106, 247, 0.1);
+  border: 1px solid rgba(124, 106, 247, 0.2);
+  color: #b8aff8;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.prose-chat pre {
+  margin: 0.9em 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.prose-chat pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.prose-chat blockquote {
+  border-left: 2px solid var(--accent-primary);
+  padding-left: 1em;
+  color: var(--text-secondary);
+  margin: 0.9em 0;
+  font-style: italic;
+}
+
+.prose-chat hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 1.2em 0;
+}
+
+.prose-chat a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(124, 106, 247, 0.4);
+}
+
+.prose-chat a:hover {
+  text-decoration-color: var(--accent-primary);
+}
+
+.prose-chat table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 0.9em 0;
+}
+
+.prose-chat th {
+  background: var(--bg-tertiary);
+  color: #c8c8e8;
+  font-weight: 600;
+  padding: 0.5em 0.8em;
+  text-align: left;
+  border: 1px solid var(--border-subtle);
+}
+
+.prose-chat td {
+  padding: 0.45em 0.8em;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.prose-chat tr:hover td {
+  background: rgba(124, 106, 247, 0.04);
+}
+
+/* Loading dots */
+.loading-dots span {
+  animation: blink 1.4s infinite;
+  opacity: 0.2;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 1; }
+}
+
+/* Glow effects */
+.glow-accent {
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Textarea auto-resize */
+textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+/* Selection */
+::selection {
+  background: rgba(124, 106, 247, 0.25);
+  color: var(--text-primary);
+}
