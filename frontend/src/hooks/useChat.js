@@ -38,7 +38,6 @@ export function useChat(model) {
     setError(null)
 
     try {
-      // Build conversation history (exclude welcome message, only real messages)
       const history = [...messages, userMessage]
         .filter(m => m.id !== 'welcome')
         .map(m => ({ role: m.role, content: m.content }))
@@ -56,17 +55,15 @@ export function useChat(model) {
 
       setMessages(prev => [...prev, assistantMessage])
     } catch (err) {
-      const errorMsg = err.response?.data?.error || 'Erro ao conectar com o servidor. Verifique se o backend está rodando.'
+      const errorMsg = err.response?.data?.error || 'Erro ao conectar com o servidor.'
       setError(errorMsg)
-      
-      const errorMessage = {
+      setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
         content: `❌ **Erro:** ${errorMsg}`,
         timestamp: new Date(),
         isError: true,
-      }
-      setMessages(prev => [...prev, errorMessage])
+      }])
     } finally {
       setIsLoading(false)
     }
